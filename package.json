@@ -1,0 +1,32 @@
+{
+  "name": "react-native-star-rating-view",
+  "version": "0.0.1",
+  "description": "StarRatingView for react-native, supporting decimal fraction and sliding rating.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksti/react-native-star-rating-view.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "react-native",
+    "star",
+    "rating"
+  ],
+  "author": "GJS ksti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ksti/react-native-star-rating-view/issues"
+  },
+  "homepage": "https://github.com/ksti/react-native-star-rating-view#readme",
+  "peerDependencies": {
+    "react-native": ">=0.30.0"
+  },
+  "dependencies": {
+    "react-native-vector-icons": "^4.0.0"
+  },
+}
