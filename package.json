@@ -1,10 +1,10 @@
 {
   "name": "react-native-star-rating-view",
   "version": "0.0.1",
-  "description": "StarRatingView for react-native, supporting decimal fraction and sliding rating.",
+  "description": "StarRatingView for react-native, supporting decimal fraction and sliding rating.(星星评价打分组件：支持小数、滑动打分)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
