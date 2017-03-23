@@ -95,7 +95,7 @@ export default class StarRatingBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: this.props.store || this.props.value,
+            value: this.props.score || this.props.value,
         }
     }
 
