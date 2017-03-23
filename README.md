@@ -1,12 +1,20 @@
 # react-native-star-rating-view
 StarRatingView for react-native, supporting decimal fraction and sliding rating.
+Inspired by [HCSStarRatingView](https://github.com/hsousa/HCSStarRatingView)
 
 # Demo
 see the [Demo](Demo/StarRatingViewDemo)
 
 ![image](Demo/StarRatingViewDemo/demo.gif)
 
+# Install
+Note: need [`react-native-vector-icons`](https://github.com/oblador/react-native-vector-icons)
+
+```
+npm install react-native-star-rating-view --save
+```
 # Usage
+
 ```js
 
 import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
