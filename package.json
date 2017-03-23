@@ -1,6 +1,6 @@
 {
   "name": "react-native-star-rating-view",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "StarRatingView for react-native, supporting decimal fraction and sliding rating.(星星评价打分组件：支持小数、滑动打分)",
   "main": "index.js",
   "scripts": {
