@@ -390,7 +390,7 @@ export default class StarRatingView extends Component {
         let valueFixed = value;
         if (this.props.allowsHalfStars) {
             if (this.props.accurateHalfStars) {
-                valueFixed = value.toFixed(this.props.valueToFix);
+                valueFixed = Number(value.toFixed(this.props.valueToFix)); // toFixed 转成字符串了。。
             }
             else {
                 if (value+.5 < Math.ceil(value)) {
@@ -507,7 +507,7 @@ class StarView extends Component {
         }
 
         return (
-            <View style={styles.star, starStyleMerge}>
+            <View style={[styles.star, starStyleMerge]}>
                 <View style={[styles.star, starStyleMerge]}>
                     {emptyStarImage}
                 </View>
