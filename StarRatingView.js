@@ -256,7 +256,7 @@ export default class StarRatingView extends Component {
 
     _renderStarsView = () => {
         const {value} = this.state;
-        const {allowsHalfStars, accurateHalfStars, spacing, starStyle} = this.props;
+        const {allowsHalfStars, accurateHalfStars, spacing, starStyle, emptyStarColor, tintColor, emptyStarImage, filledStarImage} = this.props;
         let stars = [];
         for (let idx = 0; idx < this._validMaximumValue(); idx++) {
             let highlighted = (idx+1 <= Math.ceil(value));
@@ -267,6 +267,10 @@ export default class StarRatingView extends Component {
                     star = <StarView
                         key={`StarView_id_${idx}`}
                         style={[starStyle, {marginRight: spacing}]}
+                        emptyStarColor={emptyStarColor}
+                        tintColor={tintColor}
+                        emptyStarImage={emptyStarImage}
+                        filledStarImage={filledStarImage}
                         progress={progress}
                     >
                     </StarView>;
@@ -275,6 +279,10 @@ export default class StarRatingView extends Component {
                     star = <StarView
                         key={`StarView_id_${idx}`}
                         style={[starStyle, {marginRight: spacing}]}
+                        emptyStarColor={emptyStarColor}
+                        tintColor={tintColor}
+                        emptyStarImage={emptyStarImage}
+                        filledStarImage={filledStarImage}
                         progress={0.5}
                     >
                     </StarView>;
@@ -283,6 +291,10 @@ export default class StarRatingView extends Component {
                 star = <StarView
                     key={`StarView_id_${idx}`}
                     style={[starStyle, {marginRight: spacing}]}
+                    emptyStarColor={emptyStarColor}
+                    tintColor={tintColor}
+                    emptyStarImage={emptyStarImage}
+                    filledStarImage={filledStarImage}
                     progress={highlighted ? 1 : 0}
                 >
                 </StarView>;
@@ -330,6 +342,12 @@ export default class StarRatingView extends Component {
 
     // 获取星星尺寸大小
     _getStarSize = () => {
+        if (!this.props.starStyle) {
+            return {
+                width: 16,
+                height: 16,
+            }
+        }
         return {
             width: this.props.starStyle.width || 16,
             height: this.props.starStyle.height || 16,
