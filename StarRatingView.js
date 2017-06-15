@@ -247,7 +247,7 @@ export default class StarRatingView extends Component {
             onLayout={(e: LayoutEvent) => {
                 this.setState({
                     viewLayout: e.nativeEvent.layout
-                }, this._handleLayout);
+                }, this._handleLayout(e));
             }}
         >
             {this._renderStarsView()}
@@ -334,7 +334,14 @@ export default class StarRatingView extends Component {
         }
     }
 
-    _handleLayout = () => {
+    _handleLayout = (e: LayoutEvent) => {
+        // 有可能测量的时机不对(过早)。。所以一个笨办法：延迟处理
+        setTimeout(() => {
+            this._measure();
+        }, 1000); // 延迟1s测量
+    }
+
+    _measure = () => {
         this.refs.starRatingView.measure((x, y, width, height, pageX, pageY) => {
             this.locationDiffX = pageX;
         });
@@ -379,7 +386,6 @@ export default class StarRatingView extends Component {
             } else {
                 value = Math.ceil(value);
             }
-
             return value;
         }
     }
