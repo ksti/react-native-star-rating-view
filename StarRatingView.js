@@ -95,6 +95,7 @@ export default class StarRatingView extends Component {
             },
             viewLayout: {},
         }
+        this.timer = undefined
     }
 
     // 创建手势
@@ -233,6 +234,9 @@ export default class StarRatingView extends Component {
     componentWillMount() {
         this._createPanResponder();
     }
+    componentWillUnmount(){
+        clearTimeout(this.timer)
+    }
 
     componentWillReceiveProps(nextProps) {
         this._handleNextProps(nextProps);
@@ -336,7 +340,8 @@ export default class StarRatingView extends Component {
 
     _handleLayout = (e: LayoutEvent) => {
         // 有可能测量的时机不对(过早)。。所以一个笨办法：延迟处理
-        setTimeout(() => {
+        clearTimeout(this.timer)
+        this.timer = setTimeout(() => {
             this._measure();
         }, 1000); // 延迟1s测量
     }
