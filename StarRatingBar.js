@@ -124,6 +124,13 @@ export default class StarRatingBar extends Component {
                     maximumValue={this.props.maximumValue}
                     minimumValue={this.props.minimumValue}
                     spacing={this.props.spacing}
+                    valueToFix={this.props.valueToFix}
+                    emptyStarColor={this.props.emptyStarColor}
+                    tintColor={this.props.tintColor}
+                    emptyStarImage={this.props.emptyStarImage}
+                    halfStarImage={this.props.halfStarImage}
+                    filledStarImage={this.props.filledStarImage}
+
                     value={this.state.value}
                     onStarValueChanged={(changedValue) => {
                         this.setState({value: changedValue});
