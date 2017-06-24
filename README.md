@@ -54,5 +54,21 @@ import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
 
 ```
 
+## customize star image(自定义图片)
+
+```js
+
+// readOnly, allow accurate value(只读、显示小数)
+<StarRatingBar
+    score={2.3}
+    //emptyStarColor='#ff6666'
+    //tintColor='#ff6666'
+    emptyStarImage={<Image style={{width:16, height: 16}} source={{uri: 'emptyStar.png: your image path'}} />}
+    filledStarImage={<Image style={{width:16, height: 16}} source={require('star.png: your image path')} />}
+    scoreTextStyle={{color:'#ff6666'}}
+/>
+
+```
+
 # License
 MIT
