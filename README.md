@@ -58,7 +58,7 @@ import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
 
 ```js
 
-// readOnly, allow accurate value(只读、显示小数)
+// readOnly(默认只读、不显示小数)
 <StarRatingBar
     score={2.3}
     //emptyStarColor='#ff6666'
@@ -67,6 +67,22 @@ import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
     filledStarImage={<Image style={{width:16, height: 16}} source={require('star.png: your image path')} />}
     scoreTextStyle={{color:'#ff6666'}}
 />
+
+// customize star size(自定义尺寸大小)
+<View style={{height: 60, flexDirection: 'row', alignItems: 'center'}}>
+    <StarRatingBar
+        score={2.3}
+        //emptyStarColor='#ff6666'
+        //tintColor='#ff6666'
+        starStyle={{
+            width: 26,
+            height: 26,
+        }}
+        emptyStarImage={<Image style={{width: 26, height: 26}} source={{uri: 'emptyStar.png: your image path'}} />}
+        filledStarImage={<Image style={{width: 26, height: 26}} source={require('star.png: your image path')} />}
+        scoreTextStyle={{color:'#ff6666'}}
+    />
+</View>
 
 ```
 
