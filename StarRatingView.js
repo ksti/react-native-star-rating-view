@@ -522,7 +522,15 @@ class StarView extends Component {
                 <View style={[styles.star, starStyleMerge]}>
                     {emptyStarImage}
                 </View>
-                <View style={[styles.absoluteStar, starStyleMerge, {width: starStyleMerge.width * progress}]}>
+                <View
+                    /**
+                     * removeClippedSubviews bool
+                     * 这是一个特殊的性能相关的属性，由RCTView导出。在制作滑动控件时，如果控件有很多不在屏幕内的子视图，会非常有用。
+                     * 要让此属性生效，首先要求视图有很多超出范围的子视图，并且子视图和容器视图（或它的某个祖先视图）都应该有样式overflow: hidden。
+                     */
+                    removeClippedSubviews={true} // 兼容Android
+                    style={[styles.absoluteStar, starStyleMerge, {width: starStyleMerge.width * progress}]}
+                >
                     {filledStarImage}
                 </View>
             </View>
