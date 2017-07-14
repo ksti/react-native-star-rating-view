@@ -73,6 +73,7 @@ const propTypes = {
     // 额外的属性
     scoreTextStyle: React.PropTypes.object, // 自定义分数文本样式
     scoreText: React.PropTypes.string, // 分数文本
+    dontShowScore: React.PropTypes.bool, // 不显示分数
 };
 
 const defaultProps = {
@@ -107,7 +108,7 @@ export default class StarRatingBar extends Component {
     }
 
     render() {
-        const {starStyle, spacing, maximumValue, scoreTextStyle, scoreText} = this.props;
+        const {starStyle, spacing, maximumValue, scoreTextStyle, scoreText, dontShowScore} = this.props;
         let starWidth = 20;
         if (starStyle && starStyle.width) {
             starWidth = starStyle.width;
@@ -139,7 +140,7 @@ export default class StarRatingBar extends Component {
                 >
                 </StarRatingView>
             </View>
-            <Text style={scoreTextStyle}>{this.state.value}{scoreText}</Text>
+            {dontShowScore ? null : <Text style={scoreTextStyle}>{this.state.value}{scoreText}</Text>}
         </View>;
     }
 }
