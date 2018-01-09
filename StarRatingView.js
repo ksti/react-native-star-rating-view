@@ -30,7 +30,8 @@
 
 'use strict';
 
-import React, { PropTypes, Component } from "react";
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import {
     View,
     StyleSheet,
@@ -40,33 +41,34 @@ import {
     TouchableOpacity,
     TouchableHighlight,
     PanResponder,
+    ViewPropTypes
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class StarRatingView extends Component {
     static propTypes = {
-        style: View.propTypes.style,
-        starStyle: View.propTypes.style, // 自定义星星样式
-        readOnly: React.PropTypes.bool, // 是否只读
-        continuous: React.PropTypes.bool, // 是否允许滑动打分
-        maximumValue: React.PropTypes.number.isRequired, // 最大值
-        minimumValue: React.PropTypes.number.isRequired, // 最小值
-        value: React.PropTypes.number.isRequired, // 具体数值
-        valueToFix: React.PropTypes.number, // 保留几位小数
-        spacing: React.PropTypes.number.isRequired, // 分数
-        allowsHalfStars: React.PropTypes.bool, // 是否允许半颗星
-        accurateHalfStars: React.PropTypes.bool, // 是否允许精确值
+        style: ViewPropTypes.style,
+        starStyle: ViewPropTypes.style, // 自定义星星样式
+        readOnly: PropTypes.bool, // 是否只读
+        continuous: PropTypes.bool, // 是否允许滑动打分
+        maximumValue: PropTypes.number.isRequired, // 最大值
+        minimumValue: PropTypes.number.isRequired, // 最小值
+        value: PropTypes.number.isRequired, // 具体数值
+        valueToFix: PropTypes.number, // 保留几位小数
+        spacing: PropTypes.number.isRequired, // 分数
+        allowsHalfStars: PropTypes.bool, // 是否允许半颗星
+        accurateHalfStars: PropTypes.bool, // 是否允许精确值
         /* todo: 绘制星星图片
-         starBorderColor: React.PropTypes.string, // 星星边线颜色
-         starBorderWidth: React.PropTypes.number, // 星星边线宽度
+         starBorderColor: PropTypes.string, // 星星边线颜色
+         starBorderWidth: PropTypes.number, // 星星边线宽度
          */
-        emptyStarColor: React.PropTypes.string, // 空星填充色
-        tintColor: React.PropTypes.string, // 着色(填充色)
-        emptyStarImage: React.PropTypes.element, // 空星图片
-        halfStarImage: React.PropTypes.element, // 半星图片
-        filledStarImage: React.PropTypes.element, // 实星图片
-        onStarValueChanged: React.PropTypes.func, // 数值改变时的回调函数
+        emptyStarColor: PropTypes.string, // 空星填充色
+        tintColor: PropTypes.string, // 着色(填充色)
+        emptyStarImage: PropTypes.element, // 空星图片
+        halfStarImage: PropTypes.element, // 半星图片
+        filledStarImage: PropTypes.element, // 实星图片
+        onStarValueChanged: PropTypes.func, // 数值改变时的回调函数
     };
 
     static defaultProps = {
@@ -448,16 +450,16 @@ export default class StarRatingView extends Component {
 
 class StarView extends Component {
     static propTypes = {
-        progress: React.PropTypes.number.isRequired, // 占比
+        progress: PropTypes.number.isRequired, // 占比
         /* todo: 绘制星星图片
-         starBorderColor: React.PropTypes.string, // 星星边线颜色
-         starBorderWidth: React.PropTypes.number, // 星星边线宽度
+         starBorderColor: PropTypes.string, // 星星边线颜色
+         starBorderWidth: PropTypes.number, // 星星边线宽度
          */
-        emptyStarColor: React.PropTypes.string, // 空星填充色
-        tintColor: React.PropTypes.string, // 着色(填充色)
-        emptyStarImage: React.PropTypes.element, // 空星图片
-        halfStarImage: React.PropTypes.element, // 半星图片
-        filledStarImage: React.PropTypes.element, // 实星图片
+        emptyStarColor: PropTypes.string, // 空星填充色
+        tintColor: PropTypes.string, // 着色(填充色)
+        emptyStarImage: PropTypes.element, // 空星图片
+        halfStarImage: PropTypes.element, // 半星图片
+        filledStarImage: PropTypes.element, // 实星图片
     };
 
     static defaultProps = {
