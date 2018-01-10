@@ -8,10 +8,14 @@ see the [Demo](Demo/StarRatingViewDemo)
 ![image](Demo/StarRatingViewDemo/demo.gif)
 
 # Install
-Note: need [`react-native-vector-icons`](https://github.com/oblador/react-native-vector-icons)
 
+add following line of code in your package.json
 ```
-npm install react-native-star-rating-view --save
+"react-native-star-rating-view": "git+https://github.com/ksti/react-native-star-rating-view.git#purejs"
+```
+or
+```
+npm install --save https://github.com/ksti/react-native-star-rating-view.git#purejs
 ```
 # Usage
 
