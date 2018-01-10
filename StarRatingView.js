@@ -43,7 +43,7 @@ import {
     ViewPropTypes
 } from 'react-native'
 
-import Icon from 'react-native-vector-icons/FontAwesome'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 
 const RNViewPropTypes = ViewPropTypes || View.propTypes;
 const RNPropTypes = PropTypes || React.PropTypes;
@@ -515,10 +515,10 @@ class StarView extends Component {
         // 星星宽度
         let starWidth = Math.max(0, starStyleMerge.width);
         if (!emptyStarImage) {
-            emptyStarImage = <Icon style={{flex: 1, textAlign: 'center'}} name="star-o" size={starWidth} color={emptyStarColor}/>
+            // emptyStarImage = <Icon style={{flex: 1, textAlign: 'center'}} name="star-o" size={starWidth} color={emptyStarColor}/>
         }
         if (!filledStarImage) {
-            filledStarImage = <Icon style={{flex: 1, textAlign: 'center'}} name="star" size={starWidth} color={tintColor}/>
+            // filledStarImage = <Icon style={{flex: 1, textAlign: 'center'}} name="star" size={starWidth} color={tintColor}/>
         }
 
         return (
