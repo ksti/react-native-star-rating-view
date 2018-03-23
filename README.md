@@ -10,6 +10,9 @@ see the [Demo](Demo/StarRatingViewDemo)
 # Install
 Note: need [`react-native-vector-icons`](https://github.com/oblador/react-native-vector-icons)
 
+If you do not want to import `react-native-vector-icons`, 
+try the [`purejs branch`](https://github.com/ksti/react-native-star-rating-view/tree/purejs#install) 
+
 ```
 npm install react-native-star-rating-view --save
 ```
