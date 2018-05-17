@@ -50,6 +50,28 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 const RNViewPropTypes = ViewPropTypes || View.propTypes;
 const RNPropTypes = PropTypes || React.PropTypes;
 
+let _StarLog = function (message?: any, ...optionalParams: any[]) {
+    console.log(message, ...optionalParams);
+};
+if (!__DEV__) {
+    /*
+    global.console = {
+        info: () => {
+        },
+        log: () => {
+        },
+        warn: () => {
+        },
+        error: () => {
+        }
+    }
+    */
+
+    _StarLog = () => {};
+}
+
+export const StarLog = _StarLog;
+
 export default class StarRatingView extends Component {
     static propTypes = {
         style: RNViewPropTypes.style,
@@ -127,26 +149,26 @@ export default class StarRatingView extends Component {
                 // 开始手势操作。给用户一些视觉反馈，让他们知道发生了什么事情！
 
                 // gestureState.{x,y}0 现在会被设置为0
-                console.log('onPanResponderGrant');
+                StarLog('onPanResponderGrant');
                 this._handlePanResponderGrant(evt, gestureState);
             },
             onPanResponderMove: (evt, gestureState) => {
                 // 最近一次的移动距离为gestureState.move{X,Y}
 
                 // 从成为响应者开始时的累计手势移动距离为gestureState.d{x,y}
-                console.log('onPanResponderMove');
+                StarLog('onPanResponderMove');
                 this._handlePanResponderMove(evt, gestureState);
             },
             onPanResponderTerminationRequest: (evt, gestureState) => true,
             onPanResponderRelease: (evt, gestureState) => {
                 // 用户放开了所有的触摸点，且此时视图已经成为了响应者。
                 // 一般来说这意味着一个手势操作已经成功完成。
-                console.log('onPanResponderRelease');
+                StarLog('onPanResponderRelease');
                 this._handlePanResponderEnd(evt, gestureState);
             },
             onPanResponderTerminate: (evt, gestureState) => {
                 // 另一个组件已经成为了新的响应者，所以当前手势将被取消。
-                console.log('onPanResponderTerminate');
+                StarLog('onPanResponderTerminate');
                 this._handlePanResponderEnd(evt, gestureState);
             },
             onShouldBlockNativeResponder: (evt, gestureState) => {
@@ -159,39 +181,39 @@ export default class StarRatingView extends Component {
 
     _handleOnStartShouldSetPanResponderCapture = (e: Object, gestureState: Object)=> {
         // OnStartShouldSetPanResponderCapture
-        console.log('_handleOnStartShouldSetPanResponderCapture');
+        StarLog('_handleOnStartShouldSetPanResponderCapture');
         // return this.props.readOnly;
         return false;
     }
     _handleOnMoveShouldSetPanResponderCapture = (e: Object, gestureState: Object)=> {
         // OnMoveShouldSetPanResponderCapture
-        console.log('_handleOnMoveShouldSetPanResponderCapture');
+        StarLog('_handleOnMoveShouldSetPanResponderCapture');
         // if (!this.props.readOnly && this.props.continuous) return true;
         return false;
     }
     // 用户开始触摸屏幕的时候，是否愿意成为响应者；
     _handleOnStartShouldSetPanResponder = (e: Object, gestureState: Object)=> {
         // Should we become active when the user presses down on the circle?
-        console.log('_handleOnStartShouldSetPanResponder');
+        StarLog('_handleOnStartShouldSetPanResponder');
         return !this.props.readOnly;
     }
     // 在每一个触摸点开始移动的时候，再询问一次是否响应触摸交互；
     _handleOnMoveShouldSetPanResponder = (e: Object, gestureState: Object)=> {
         // Should we become active when the user moves a touch over the circle?
-        console.log('_handleOnMoveShouldSetPanResponder');
+        StarLog('_handleOnMoveShouldSetPanResponder');
         if (!this.props.readOnly && this.props.continuous) return true;
         return false;
     }
     // 开始手势操作。给用户一些视觉反馈，让他们知道发生了什么事情！
     _handlePanResponderGrant = (e: Object, gestureState: Object) => {
-        console.log("_handlePanResponderGrant");
+        StarLog("_handlePanResponderGrant");
         // this.locationX = e.nativeEvent.locationX;
         // this.locationY = e.nativeEvent.locationY;
         this.startLocationX = e.nativeEvent.pageX;
         this.startLocationY = e.nativeEvent.pageY;
         this.locationX = this.startLocationX;
         this.locationY = this.startLocationY;
-        console.log('start location x: ' + this.startLocationX);
+        StarLog('start location x: ' + this.startLocationX);
         // this.setState({
         //     containerStyle: {
         //         opacity: 0.8, // 透明度改为 0.8
@@ -200,7 +222,7 @@ export default class StarRatingView extends Component {
     }
     // 最近一次的移动距离为gestureState.move{X,Y}
     _handlePanResponderMove = (e: Object, gestureState: Object) => {
-        console.log("_handlePanResponderMove");
+        StarLog("_handlePanResponderMove");
         // this.locationX += gestureState.dx;
         // this.locationY += gestureState.dy;
         this.locationX = this.startLocationX + gestureState.dx;
@@ -217,7 +239,7 @@ export default class StarRatingView extends Component {
     // 用户放开了所有的触摸点，且此时视图已经成为了响应者。
     // 一般来说这意味着一个手势操作已经成功完成。
     _handlePanResponderEnd = (e: Object, gestureState: Object) => {
-        console.log("_handlePanResponderEnd");
+        StarLog("_handlePanResponderEnd");
         if (!this.props.readOnly) {
             let value = this._transFormStarValueByLocationX(this.locationX);
             this._setValue(value);
@@ -373,7 +395,7 @@ export default class StarRatingView extends Component {
     }
     // 通过 LocationX 算出 star value
     _transFormStarValueByLocationX = (locationX) => {
-        console.log('_transFormStarValueByLocationX: ' + locationX);
+        StarLog('_transFormStarValueByLocationX: ' + locationX);
         let actualLocationX = locationX - this.locationDiffX;
         let count = this.state.maximumValue;
         let containerWidth = count * this._getStarSize().width + this.props.spacing * (count - 1);
@@ -443,7 +465,7 @@ export default class StarRatingView extends Component {
     }
     // 设置 value
     _setValue = (value) => {
-        console.log('_setValue: ' + value);
+        StarLog('_setValue: ' + value);
         if (value !== this.state.value && value <= this._validMaximumValue() && value >= this._validMinimumValue()) {
             this.setState({
                 value,
