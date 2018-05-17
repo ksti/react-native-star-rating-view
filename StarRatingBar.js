@@ -48,7 +48,7 @@ import {
 
 import PropTypes from 'prop-types'
 
-import StarRatingView from './StarRatingView'
+import StarRatingView, { StarLog } from './StarRatingView'
 
 const RNViewPropTypes = ViewPropTypes || View.propTypes;
 const RNPropTypes = PropTypes || React.PropTypes;
@@ -103,6 +103,7 @@ export default class StarRatingBar extends Component {
         this.state = {
             value: this.props.score || this.props.value,
         }
+        StarLog("hello", "star", "log");
     }
 
     componentWillReceiveProps(nextProps) {

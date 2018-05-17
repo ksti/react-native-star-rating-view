@@ -28,6 +28,7 @@ import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
 // readOnly, allow accurate value(只读、显示小数)
 <StarRatingBar
     score={2.3}
+    dontShowScore={false} // true: not show the score text view
     allowsHalfStars={true}
     accurateHalfStars={true}
 />
