@@ -426,6 +426,16 @@ export default class StarRatingView extends Component {
     _getFixedValue = (value: 0) => {
         // fix value
         value = Math.max(0, value);
+        // 修复滑动时数字会超出大小限定的问题
+        if (
+            value !== this.state.value &&
+            value <= this._validMaximumValue() &&
+            value >= this._validMinimumValue()
+        ) {
+            // 不变
+        } else {
+            value = this.state.value
+        }
         let valueFixed = value;
         if (this.props.allowsHalfStars) {
             if (this.props.accurateHalfStars) {
