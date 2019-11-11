@@ -425,7 +425,7 @@ export default class StarRatingView extends Component {
     // 保留几位小数
     _getFixedValue = (value: 0) => {
         // fix value
-        value = Math.max(0, value);
+        value = this._validValue(value);
         let valueFixed = value;
         if (this.props.allowsHalfStars) {
             if (this.props.accurateHalfStars) {
