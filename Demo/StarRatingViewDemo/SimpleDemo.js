@@ -16,10 +16,23 @@ import {
     Dimensions,
     InteractionManager,
     ScrollView,
+    FlatList,
+    TouchableWithoutFeedback, Keyboard,
 } from "react-native";
 
 import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
 import StarRatingView from 'react-native-star-rating-view'
+
+const DismissKeyboardHOC = (Comp) => {
+    return ({ children, ...props }) => (
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+            <Comp {...props}>
+                {children}
+            </Comp>
+        </TouchableWithoutFeedback>
+    );
+};
+const DismissKeyboardView = DismissKeyboardHOC(View)
 
 // 该页面所需参数（可选）
 const propTypes={
@@ -60,19 +73,6 @@ export default class SimpleDemo extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                {this._renderContent()}
-            </View>
-        );
-    }
-
-    // 渲染内容主体
-    _renderContent = () => {
-        if (this.state.renderPlaceholderOnly) {
-            return this._renderPlaceholderView();
-        }
-
-        return (
-            <View style={styles.container}>
                 {this._renderStarRatingBar1()}
                 {this._renderSeparatorLine()}
                 {this._renderStarRatingBar2()}
@@ -83,6 +83,7 @@ export default class SimpleDemo extends React.Component {
                 {this._renderSeparatorLine()}
                 {this._renderEvaluateTextInput()}
                 {this._renderSeparatorLine()}
+                {this._renderFlatList()}
             </View>
         )
     }
@@ -176,15 +177,16 @@ export default class SimpleDemo extends React.Component {
                 <View style={{width: 30*5, overflow: 'hidden'}}>
                     <StarRatingView
                         starStyle={{
-                            width: 20,
+                            width: 18,
                             height: 20,
                         }}
                         readOnly={false}
                         continuous={true}
                         allowsHalfStars={true}
                         accurateHalfStars={true}
-                        maximumValue={5}
+                        maximumValue={8}
                         minimumValue={0}
+                        spacing={0}
                         value={this.state.score}
                         onStarValueChanged={(score) => {
                             this.setState({score});
@@ -222,7 +224,17 @@ export default class SimpleDemo extends React.Component {
                     value={this.state.evaluateText}
                     editable={true}
                     onChange={(event) => {
-                        let textHeight = event.nativeEvent.contentSize.height > this.textHeightMax ? event.nativeEvent.contentSize.height : this.textHeightMax;
+                        let nativeEvent = event.nativeEvent;
+                        if (nativeEvent.contentSize) { // 兼容旧版本
+                            let textHeight = nativeEvent.contentSize.height > this.textHeightMax ? nativeEvent.contentSize.height : this.textHeightMax;
+                            this.setState({
+                                evaluateTextInpuHeight: textHeight,
+                            });
+                        }
+                    }}
+                    onContentSizeChange={(event) => {
+                        let nativeEvent = event.nativeEvent;
+                        let textHeight = nativeEvent.contentSize.height > this.textHeightMax ? nativeEvent.contentSize.height : this.textHeightMax;
                         this.setState({
                             evaluateTextInpuHeight: textHeight,
                         });
@@ -233,6 +245,28 @@ export default class SimpleDemo extends React.Component {
                 />
             </View>
         );
+    }
+
+    // FLatList
+    _renderFlatList = () => {
+        let data = Array.from( {length: 50}, (v, i) => { return {key: `${i}`};} );
+        return (
+            <FlatList
+                data={data}
+                renderItem={({item}) => {
+                    switch (item.key%3) {
+                        case 1:
+                            return this._renderStarRatingBar2();
+                            break;
+                        case 2:
+                            return this._renderStarRatingBar3();
+                            break;
+                        default:
+                            return this._renderStarRatingBar1();
+                    }
+                }}
+            />
+        )
     }
 
     // 自定义事件: 评分值改变时触发的事件
