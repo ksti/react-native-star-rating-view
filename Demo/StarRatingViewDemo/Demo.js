@@ -3,5 +3,7 @@
  */
 
 import SimpleDemo from './SimpleDemo'
+// import StarRatingTesting from './FlatListDemo'
 
 export default SimpleDemo;
+// export default StarRatingTesting;

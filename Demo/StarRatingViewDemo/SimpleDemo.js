@@ -22,6 +22,7 @@ import {
 
 import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
 import StarRatingView from 'react-native-star-rating-view'
+import StarRatingTesting from './FlatListDemo'
 
 const DismissKeyboardHOC = (Comp) => {
     return ({ children, ...props }) => (
@@ -53,7 +54,7 @@ export default class SimpleDemo extends React.Component {
 
     constructor(props) {
         super(props);
-        this.textHeightMax = 80;
+        this.textHeightMax = 40;
         this.state = {
             renderPlaceholderOnly: true,
             score: 0,
@@ -83,7 +84,7 @@ export default class SimpleDemo extends React.Component {
                 {this._renderSeparatorLine()}
                 {this._renderEvaluateTextInput()}
                 {this._renderSeparatorLine()}
-                {this._renderFlatList()}
+                {this._renderFlatList2()}
             </View>
         )
     }
@@ -268,6 +269,8 @@ export default class SimpleDemo extends React.Component {
             />
         )
     }
+
+    _renderFlatList2 = () => <StarRatingTesting/>
 
     // 自定义事件: 评分值改变时触发的事件
     _onStarValueChanged = (value) => {
