@@ -188,8 +188,8 @@ export default class SimpleDemo extends React.Component {
                     continuous={true}
                     allowsHalfStars={true}
                     accurateHalfStars={true}
-                    emptyStarImage={<Icon style={{flex: 1, textAlign: 'center'}} name="heart-o" size={20} color="#999"/>}
-                    filledStarImage={<Icon style={{flex: 1, textAlign: 'center'}} name="heart" size={20} color="red"/>}
+                    emptyStarImage={<Icon name="heart-o" size={20} color="#999"/>}
+                    filledStarImage={<Icon name="heart" size={20} color="red"/>}
                     scoreTextStyle={{marginLeft: 10, color:'red'}}
                 />
             </View>

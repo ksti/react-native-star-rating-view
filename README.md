@@ -89,6 +89,25 @@ import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
 </View>
 
 ```
+### or use Icon from 'react-native-vector-icons/FontAwesome'(使用Icon)
+```
+import Icon from 'react-native-vector-icons/FontAwesome'
+
+<StarRatingBar
+    score={2.3}
+    starStyle={{
+        width: 20,
+        height: 20,
+    }}
+    readOnly={false}
+    continuous={true}
+    allowsHalfStars={true}
+    accurateHalfStars={true}
+    emptyStarImage={<Icon name="heart-o" size={20} color="#999"/>}
+    filledStarImage={<Icon name="heart" size={20} color="red"/>}
+    scoreTextStyle={{marginLeft: 10, color:'red'}}
+/>
+```
 
 # License
 MIT
