@@ -90,7 +90,7 @@ import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
 
 ```
 ### or use Icon from 'react-native-vector-icons/FontAwesome'(使用Icon)
-```
+```js
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 <StarRatingBar
