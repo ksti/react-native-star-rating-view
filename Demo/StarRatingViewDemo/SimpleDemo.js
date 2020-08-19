@@ -20,6 +20,7 @@ import {
     TouchableWithoutFeedback, Keyboard,
 } from "react-native";
 
+import Icon from 'react-native-vector-icons/FontAwesome'
 import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
 import StarRatingView from 'react-native-star-rating-view'
 import StarRatingTesting from './FlatListDemo'
@@ -79,6 +80,8 @@ export default class SimpleDemo extends React.Component {
                 {this._renderStarRatingBar2()}
                 {this._renderSeparatorLine()}
                 {this._renderStarRatingBar3()}
+                {this._renderSeparatorLine()}
+                {this._renderStarRatingBar4()}
                 {this._renderSeparatorLine()}
                 {this._renderAaccurateStarRatingView()}
                 {this._renderSeparatorLine()}
@@ -161,6 +164,33 @@ export default class SimpleDemo extends React.Component {
                     onStarValueChanged={(score) => {
                         console.log('new score:' + score);
                     }}
+                />
+            </View>
+        );
+    }
+
+    // 渲染评分(滑动打分、精确到小数)
+    _renderStarRatingBar4 = () => {
+        return (
+            <View style={[styles.starRating, {alignSelf: 'flex-start', alignItems: 'center', height: 40}]}>
+                <View style={{paddingRight: 10, paddingLeft: 10}}>
+                    <Text style={styles.text}>
+                        自定义图片
+                    </Text>
+                </View>
+                <StarRatingBar
+                    score={2.3}
+                    starStyle={{
+                        width: 20,
+                        height: 20,
+                    }}
+                    readOnly={false}
+                    continuous={true}
+                    allowsHalfStars={true}
+                    accurateHalfStars={true}
+                    emptyStarImage={<Icon style={{flex: 1, textAlign: 'center'}} name="heart-o" size={20} color="#999"/>}
+                    filledStarImage={<Icon style={{flex: 1, textAlign: 'center'}} name="heart" size={20} color="red"/>}
+                    scoreTextStyle={{marginLeft: 10, color:'red'}}
                 />
             </View>
         );
