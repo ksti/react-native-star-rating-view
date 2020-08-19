@@ -84,7 +84,7 @@ import StarRatingBar from 'react-native-star-rating-view/StarRatingBar'
         }}
         emptyStarImage={<Image style={{width: 26, height: 26}} source={{uri: 'emptyStar.png: your image path'}} />}
         filledStarImage={<Image style={{width: 26, height: 26}} source={require('star.png: your image path')} />}
-        scoreTextStyle={{color:'#ff6666'}}
+        scoreTextStyle={{marginLeft: 10, color:'#ff6666'}}
     />
 </View>
 
